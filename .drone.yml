@@ -1,15 +1,9 @@
-build:
+pipeline:
   xenial:
-    # cat base-images/xenial-systemd-bare.dkr | docker build --tag=gcr.io/kubeadm/ci-xenial-systemd:bare -
-    image: gcr.io/kubeadm/ci-xenial-systemd:bare
-    commands:
-      - ./build-debian.sh
-
-#publish:
-#  xenial:
-#    gcr:
-#      token: >
-#        $$GCR_SECRET
-#      repo: gcr.io/kubeadm/ci-xenial-systemd
-#      tag:
-#        - $GIT_REV # TODO what is exact name?
+    image: plugins/docker
+    repo: gcr.io/kubeadm/ci-xenial-systemd
+    context: images
+    dockerfile: images/xenial-systemd-main.dkr
+    tag:
+      - ${DRONE_BRANCH}-latest
+      - ${DRONE_BRANCH}-${DRONE_COMMIT}

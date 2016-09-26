@@ -1,0 +1,3 @@
+FROM gcr.io/kubeadm/ci-xenial-systemd:bare
+ADD ./build-debian.sh /tmp/build.sh
+RUN /tmp/build.sh

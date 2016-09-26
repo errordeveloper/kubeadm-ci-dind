@@ -18,11 +18,11 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
-apt-get update
+apt-get -qq update
 
-apt-get -y upgrade
+apt-get -qq -y upgrade
 
-apt-get -y install systemd apt-transport-https ca-certificates socat
+apt-get -qq -y install systemd apt-transport-https ca-certificates socat
 
 remove_files() {
   xargs -n 1 rm -f -v
@@ -41,12 +41,12 @@ apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E8
 ## TODO determine the distro
 echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sources.list.d/docker.list
 
-apt-get update
+apt-get -qq update
 
-apt-get -y install docker-engine=1.12.1-0~xenial
+apt-get -qq -y install docker-engine=1.12.1-0~xenial
 
-apt-get -y install socat
-apt-get -y autoremove
-apt-get clean
+apt-get -qq -y install socat
+apt-get -qq -y autoremove
+apt-get -qq clean
 
 ls /var/lib/apt/lists/* /tmp/* /var/tmp/* | remove_files
