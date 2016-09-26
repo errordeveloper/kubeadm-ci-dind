@@ -1,0 +1,5 @@
+build:
+  # cat base-images/xenial-systemd-bare.dkr | docker build --tag=gcr.io/kubeadm/ci-xenial-systemd:bare -
+  image: gcr.io/kubeadm/ci-xenial-systemd:bare
+  commands:
+    - ./build-debian.sh
