@@ -3,7 +3,7 @@ pipeline:
     image: plugins/docker
     repo: gcr.io/kubeadm/ci-xenial-systemd
     context: images
-    dockerfile: images/xenial-systemd-main.dkr
+    dockerfile: images/xenial-systemd-base.dkr
     tag:
-      - ${DRONE_BRANCH}-latest
-      - ${DRONE_BRANCH}-${DRONE_COMMIT}
+      - base-${DRONE_BRANCH}-latest
+      - base-${DRONE_BRANCH}-${DRONE_COMMIT}
