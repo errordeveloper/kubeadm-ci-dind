@@ -43,7 +43,8 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sour
 
 apt-get -qq update
 
-apt-get -qq -y install docker-engine=1.12.1-0~xenial
+apt-get -qq -y install docker-engine=1.11.2-0~xenial
+apt-mark hold docker-engine
 
 apt-get -qq -y install socat
 apt-get -qq -y autoremove
