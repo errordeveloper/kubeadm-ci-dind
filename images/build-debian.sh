@@ -22,7 +22,9 @@ apt-get -qq update
 
 apt-get -qq -y upgrade
 
-apt-get -qq -y install systemd apt-transport-https ca-certificates socat
+apt-get -qq -y install \
+  systemd apt-transport-https ca-certificates \
+  socat ebtables ethtool
 
 remove_files() {
   xargs -n 1 rm -f -v
