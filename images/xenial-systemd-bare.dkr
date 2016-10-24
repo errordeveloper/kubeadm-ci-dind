@@ -22,4 +22,10 @@ FROM ubuntu:xenial
 # SIGRTMIN+3 is the shutdown signal for systemd
 STOPSIGNAL SIGRTMIN+3
 
-CMD [ "/sbin/init" ]
+# See https://github.com/kubernetes/release/pull/86#issuecomment-248185616
+# Hardlink init to another name to avoid having oci-systemd-hooks (rhel/fedora/centos)
+# detect containers using this image as requiring read-only cgroup
+# mounts.  dind containers are intended to be run with --privileged
+# to ensure cgroups mounted with read-write permissions.
+RUN ln /sbin/init /sbin/dind_init
+ENTRYPOINT ["/sbin/dind_init"]

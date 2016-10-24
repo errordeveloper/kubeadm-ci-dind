@@ -1,0 +1,9 @@
+[Unit]
+Description=Prepare to start docker-in-docker
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/dind_prepare
+
+[Install]
+RequiredBy=docker.service
