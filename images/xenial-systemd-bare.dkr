@@ -18,6 +18,8 @@
 
 FROM ubuntu:xenial
 
+# http://developers.redhat.com/blog/2016/09/13/running-systemd-in-a-non-privileged-container/
+# SIGRTMIN+3 is the shutdown signal for systemd
 STOPSIGNAL SIGRTMIN+3
 
 CMD [ "/sbin/init" ]
