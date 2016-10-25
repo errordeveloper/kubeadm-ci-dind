@@ -1,3 +1,6 @@
 FROM gcr.io/kubeadm/ci-xenial-systemd:bare
-ADD ./build-debian.sh /tmp/build.sh
+COPY ./build-debian.sh /tmp/build.sh
+COPY ./10-dind.conf /etc/systemd/system/docker.service.d/
+COPY ./dind_prepare /usr/sbin/
+COPY ./dind_prepare.service /lib/systemd/system/
 RUN /tmp/build.sh

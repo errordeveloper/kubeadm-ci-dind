@@ -53,3 +53,6 @@ apt-get -qq -y autoremove
 apt-get -qq clean
 
 ls /var/lib/apt/lists/* /tmp/* /var/tmp/* | remove_files
+
+chmod +x /usr/sbin/dind_prepare
+systemctl enable dind_prepare
